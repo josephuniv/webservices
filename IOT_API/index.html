@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>IoT API - Web Services</title>
+  </head>
+  <body>
+    <div class="container">
+        <h1>IoT API</h1>
+        Please update <b><i>$host = "";</i></b> values on both the API files
+        <p>List of APIs:</p>
+        <ul>
+            <li>
+                <a href="update_temp_and_humidity.php" target="_blank">Insert Data API</a>
+            </li>
+            <li>
+                <a href="view_temp_and_humidity.php" target="_blank">View Data API</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                Insert Data API
+                <br>
+                Code:
+                <code>
+                    <br>if(isset($_GET['device_id']) && isset($_GET['temperature']) && isset($_GET['humidity']))
+                    <br>{
+                        <br>if(!empty($_GET['device_id']) && !empty($_GET['temperature']) && !empty($_GET['humidity'])){
+                            <br>$host = ""; // Endpoint of RDS from AWS
+                            <br>$user_name = "vanier_database"; //Username for the RDS Database Server
+                            <br>$password = "master_paasword_vanier_db"; // Password for the RDS Database Server
+                            <br>$database = "Vanier_Web_Service"; // Database name for the RDS Database Server
+<br>
+                            <br>$connect = mysqli_connect($host, $user_name, $password, $database);
+<br>
+                            <br>if($connect){
+                            <br>    $device_id = $_GET['device_id']; //Parameter
+                            <br>    $temperature = $_GET['temperature']; //Parameter
+                            <br>    $humidity = $_GET['humidity']; //Parameter
+                            <br>    $sql = "INSERT INTO iot_data VALUES (NULL, '$device_id',$temperature,$humidity)"; //Preparing the MySQL Query from the parameters
+                            <br>    $query = mysqli_query($connect, $sql); //Executing the MySQL Query
+                            <br>    if($query){
+                            <br>        $output = array("status" => "Success", "description" => "Data inserted successfully");
+                            <br>        echo json_encode($output);
+                            <br>    }
+                            <br>    else{
+                            <br>        $output = array("status" => "Error", "error_description" => "Insertion Error");
+                            <br>        echo json_encode($output);
+                            <br>    }
+                            <br>}
+                            <br>else{
+                            <br>    $output = array("status" => "Error", "error_description" => "Connection Error");
+                            <br>    echo json_encode($output);
+                            <br>}
+                        <br>}
+                        <br>else{
+                        <br>    $output = array("status" => "Error", "error_description" => "Empty Parameters", "solution" => "Please pass the 3 GET Non-Empty parameters required for this API!");
+                        <br>    echo json_encode($output);
+                        <br>}
+                    <br>}
+                    <br>else{
+                    <br>    $output = array("status" => "Error", "error_description" => "Missing Parameters", "solution" => "Please pass the 3 GET parameters required for this API!");
+                    <br>    echo json_encode($output);
+                    <br>}
+                </code>
+            </li>
+            <li>
+                View Data API
+                <p>Code:</p>
+                <code>
+                    <br>$host = ""; // Endpoint of RDS from AWS
+                    <br>$user_name = "vanier_database"; //Username for the RDS Database Server
+                    <br>$password = "master_paasword_vanier_db"; // Password for the RDS Database Server
+                    <br>$database = "Vanier_Web_Service"; // Database name for the RDS Database Server
+<br>
+                    <br>$connect = mysqli_connect($host, $user_name, $password, $database);
+                    <br>if($connect){
+                    <br>    $sql = "SELECT * FROM iot_data"; // Creating the SQL Query to execute
+                    <br>    $query = mysqli_query($connect, $sql); // Executing the SQL Query
+                    <br>    $all_rows = array();
+                    <br>    while($row = mysqli_fetch_assoc($query)){ //Processing the result from SQL
+                    <br>        //print_r($row); //This line can be used to look at the raw array
+                    <br>        $row_object = array(
+                    <br>            "data_id" => $row['data_id'],
+                    <br>            "device_id" => $row['device_id'],
+                    <br>            "temperature" => $row['temperature'],
+                    <br>            "humidity" => $row['humidity'],
+                    <br>        );
+                    <br>        array_push($all_rows, $row_object);
+                    <br>    }
+                    <br>    echo json_encode($all_rows);
+                    <br>}
+                    <br>else{
+                    <br>    $output = array("status" => "Error", "error_description" => "Connection Error");
+                    <br>    echo json_encode($output);
+                    <br>}
+                </code>
+            </li>
+        </ul>
+        <p>Working of the IoT API</p>
+        <img src="IoT_API.png" alt="Working of our IoT API" width="70%">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
