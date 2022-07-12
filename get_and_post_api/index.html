@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>Get and POST APIs</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>GET and POST</h1>
+            <p>
+                <b>GET</b>
+                <ul>
+                    <li>Parameters are passed in the URL</li>
+                    <li>The browser can cache your request parameters in the history</li>
+                    <li>GET can only send text data</li>
+                    <li>In PHP to access the GET variable we use $_GET</li>
+                    <li>You can send a GET request from the browser using the URL with parameters</li>
+                </ul>
+            </p>
+
+            <p>
+                <b>POST</b>
+                <ul>
+                    <li>Parameters are passed in the request body</li>
+                    <li>The browser does not cache your request parameters in the history</li>
+                    <li>POST can send binary data</li>
+                    <li>In PHP to access the POST variable we use $_POST</li>
+                    <li>You can send a POST request from an application such as POSTMAN and attach the parameters in the body</li>
+                </ul>
+            </p>
+
+            <p>
+                <b>Postman</b>: It is a tool used for testing and debugging APIs
+            </p>
+
+            <p>Client Server Architecture <br><img src="Client_Server.png" alt="Client Server" width="70%"></p>
+            <br><br>
+            <p>
+                <h1>GET Form</h1>
+                This form sends the request with the parameter in the URL of the request
+                <br>
+                <form action="get_api.php" method="GET">
+                    <p>
+                        <input type="text" class="form-control" placeholder="API Key for the GET API" name="apiKey">
+                    </p>
+                    <p>
+                        <input type="submit" class="btn">
+                    </p>
+                </form>
+            </p>
+            <br><br>
+            <p>
+                <h1>POST Form</h1>
+                This form sends the request with the parameter in the URL of the request
+                <br>
+                <form action="post_api.php" method="POST">
+                    <p>
+                        <input type="text" class="form-control" placeholder="API Key for the POST API" name="apiKey">
+                    </p>
+                    <p>
+                        <input type="submit" class="btn">
+                    </p>
+                </form>
+            </p>
+        </div>
+    </body>
+</html>
