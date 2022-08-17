@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>SESSION API</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Session in APIs</h1>
+            <p>
+                Session: A session in PHP is a variable assigned to a client, which can be accessed across multiple web pages (APIs).
+                This can be used for authenticating the user, each time a user interacts with the API.
+                <br>
+                <br>
+                <b>Each client has a unique session on the server</b>
+            </p>
+            <p>
+                We have the following APIs
+                <ol>
+                    <li><a href="login.php" target="_blank">Login</a> (Change the host name)</li>
+                    <li><a href="logout.php" target="_blank">Logout</a></li>
+                    <li><a href="show_data.php" target="_blank">Show Data</a></li>
+                </ol>
+            </p>
+            <p>
+                Steps to establish a Session in PHP:
+                <ul>
+                    <li>Step 1) User sends the username and password to the server</li>
+                    <li>Step 2) The server checks if the username and password matches the record from the database </li>
+                    <li>Step 3) If the record does not match the users table in the database, we give an error response. 
+                        <br> If it matches, we proceed to step 4</li>
+                    <li>Step 4) The server issues a cookie to the browser of the client containing the session ID. In correspondence to the session ID, the server stores the variable which can be checked for authentication</li>
+                    <li>Step 5) All requests from the client would have the cookie, which would be used by the server to authenticate the client</li>
+                </ul>
+            </p>
+
+            <p>
+                <img src="Session Management.png" alt="Session Management" width="80%">
+            </p>
+            <form action="../">
+                <p>
+                    <input type="submit" value="Back" class="btn btn-danger">
+                </p>
+            </form>
+        </div>
+    </body>
+</html>

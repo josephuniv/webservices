@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>Get and POST APIs</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Calculator API</h1>            
+            <br>
+            <p>
+                <h1>GET Method (JSON Result)</h1>
+
+                <form action="calculator_get.php" method="GET">
+                    <p>
+                        First Number: <input type="text" class="form-control" name="num1">
+                    </p>
+                    <p>
+                        Second Number: <input type="text" class="form-control" name="num2">
+                    </p>
+                    <p>
+                        Operation (Operations accepted: factorial, power, modulus, add, subtract, multiply or divide):
+                        <input type="text" class="form-control" name="operation">
+                    </p>
+                    <p>
+                        <input type="submit" class="btn">
+                    </p>
+                </form>
+            </p>
+            <br>
+            <p>
+                <h1>POST Method (JSON Result)</h1>
+
+                <form action="calculator_post.php" method="POST">
+                    <p>
+                        First Number: <input type="text" class="form-control" name="num1">
+                    </p>
+                    <p>
+                        Second Number: <input type="text" class="form-control" name="num2">
+                    </p>
+                    <p>
+                        Operation (Operations accepted: factorial, power, modulus, add, subtract, multiply or divide):
+                        <input type="text" class="form-control" name="operation">
+                    </p>
+                    <p>
+                        <input type="submit" class="btn">
+                    </p>
+                </form>
+            </p>
+
+            <br><br><br>
+            <p>
+                <h1>GET Method (XML Result)</h1>
+
+                <form action="calculator_get_xml.php" method="GET">
+                    <p>
+                        First Number: <input type="text" class="form-control" name="num1">
+                    </p>
+                    <p>
+                        Second Number: <input type="text" class="form-control" name="num2">
+                    </p>
+                    <p>
+                        Operation (Operations accepted: factorial, power, modulus, add, subtract, multiply or divide):
+                        <input type="text" class="form-control" name="operation">
+                    </p>
+                    <p>
+                        <input type="submit" class="btn">
+                    </p>
+                </form>
+            </p>
+            <br>
+            <p>
+                <h1>POST Method (XML Result)</h1>                
+                
+                <form action="calculator_post_xml.php" method="POST">
+                    <p>
+                        First Number: <input type="text" class="form-control" name="num1">
+                    </p>
+                    <p>
+                        Second Number: <input type="text" class="form-control" name="num2">
+                    </p>
+                    <p>
+                        Operation (Operations accepted: factorial, power, modulus, add, subtract, multiply or divide):
+                        <input type="text" class="form-control" name="operation">
+                    </p>
+                    <p>
+                        <input type="submit" class="btn">
+                    </p>
+                </form>
+            </p>
+
+            <br><br>
+            <h1>Calculator API Documentation</h1>
+                
+                <br>
+                <table class="table table-striped table-responsive">
+                    <tr>
+                        <th>API URL</th>
+                        <td colspan="2">http://webservicesvanierjoseph-env.eba-4bqnfdnx.ca-central-1.elasticbeanstalk.com/</td>
+                    </tr>                    
+                    <tr>
+                        <th>API Method</th>
+                        <td>GET</td>
+                        <td>POST</td>
+                    </tr>
+                    <tr>
+                        <th>API Parameters</th>
+                        <td colspan="2">num1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; num2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; operation</td>
+                    </tr>
+                    <tr>
+                        <th>API Parameter Datatype</th>
+                        <td>Integer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Integer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String</td>                        
+                    </tr>
+                    <tr>
+                        <th>Response Type</th>
+                        <td>JSON</td>
+                        <td>XML</td>
+                    </tr>
+                    <tr>
+                        <th>Sample Response (JSON)</th>
+                        <td colspan="2">
+                            {"status":"success","num1":"6","num2":"2","operation":"*","result":12}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Sample Response (XML)</th>
+                        <td colspan="2">
+                            success 6 2 * 12
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Sample Request URL</th>
+                        <td colspan="2"><a target="_blank" href="http://webservicesvanierjoseph-env.eba-4bqnfdnx.ca-central-1.elasticbeanstalk.com/calculator_get.php?num1=7&num2=3&operation=*">http://webservicesvanierjoseph-env.eba-4bqnfdnx.ca-central-1.elasticbeanstalk.com/calculator_get.php?num1=7&num2=3&operation=*</a></td>
+                    </tr>
+                    <tr>
+                        <th>Sample Error Response (JSON)</th>
+                        <td colspan="2">{"status":"error","error_code":"2","error_description":"Parameters are empty","error_solution":"Please provide the non empty required parameters for this API"}</td>
+                    </tr>
+                    <tr>
+                        <th>Sample Error Response (XML)</th>
+                        <td colspan="2">error 2 Parameters are empty Please provide the non empty required parameters for this API</td>
+                    </tr>
+                </table>
+           
+        </div>
+    </body>
+</html>
